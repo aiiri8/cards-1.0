@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h1>Записи в блоге</h1>
+<br>
+<div class="row">
+    {% for item in news[::-1] %}
+        <div class="col-sm-4">
+            <div class="card text-white bg-{% if current_user.is_authenticated and item.user == current_user %}dark{% else %}secondary{% endif %} mb-3">
+                <div class="card-header">{{ item.user.surname }} {{ item.user.name}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.content }}</p>
+                    <br>
+                    {{ item.created_date }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

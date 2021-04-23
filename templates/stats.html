@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h2>Моя статистика</h2>
+<table border="1" width="100%">
+    <tr>
+        <td> </td>
+        <td>Правильный ответ</td>
+        <td>Ваш ответ</td>
+        <td>Результат</td>
+        <td>Дата решения</td>
+    </tr>
+    {% for item in results[::-1] %}
+    <tr bgcolor="#{% if item.is_right %}a8ffab{% else %}ff9494{% endif %}">
+        <td>{{ loop.index }}</td>
+        <td>{{ item.word }}</td>
+        <td>{{ item.answer }}</td>
+        <td>{% if item.is_right %}Правильно{% else %}Неправильно{% endif %}</td>
+        <td>{{ item.created_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

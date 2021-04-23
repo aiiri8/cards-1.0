@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="card bg-{{ color }}" style="width: 80%;">
+    <img src=".{{ card[1] }}" class="card-img-top" alt={{ card[1] }}>
+    <div class="card-body">
+        <h5 class="card-title">Что это?</h5>
+        <form method="post" action="/test/{{ card[0] }}" class="d-flex">
+            <input name="answer" class="form-control me-2" placeholder="Ответ">
+            <button type="submit" class="btn btn-info">Проверить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

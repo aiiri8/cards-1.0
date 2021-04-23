@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="./static/css/style.css"/>
+{% endblock %}
+
+{% block content %}
+<br>
+<form class="news_form" action="" method="post">
+
+    {{ form.hidden_tag() }}
+
+    {{ form.title.label }}<br>
+    {{ form.title(class="form-control") }}<br>
+    {% for error in form.title.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+    {% endfor %}
+    {{ form.content.label }}<br>
+    {{ form.content(class="form-control") }}<br>
+    {% for error in form.content.errors %}
+        <p content="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+    {% endfor %}
+
+    {{ form.is_private() }} {{ form.is_private.label }}
+    <br>
+    {{ form.submit(type="submit", class="btn btn-primary") }}
+    {{message}}
+</form>
+{% endblock %}

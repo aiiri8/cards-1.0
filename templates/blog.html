@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h1>Мой блог</h1>
+<br>
+<a href="/add_news" class="btn btn-secondary">Добавить новость</a>
+<br>
+<br>
+{% for item in news[::-1] %}
+    <div class="card text-white bg-secondary mb-3" style="width: 100%">
+        <div class="card-header">{{ item.user.surname }} {{ item.user.name}}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.content }}</p>
+            <br>
+            <div>{{ item.created_date }}</div>
+            <div class="btn-group">
+                <a href="/edit_news/{{ item.id }}" class="btn btn-warning">Изменить</a>
+                <a href="/delete_news/{{ item.id }}" class="btn btn-danger">Удалить</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

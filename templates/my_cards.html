@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h1>Мои карточки</h1>
+<br>
+<a href="/add_card" class="btn btn-secondary">Добавить карточку</a>
+<br>
+<br>
+<div class="row">
+    {% for item in cards %}
+    <div class="col-sm-4">
+        <div class="card text-white bg-secondary mb-3">
+            <img src={{ item.img }} class="card-img-top" alt={{ item.word }}>
+            <div class="card-body">
+                <h5 class="card-title">{{ item.word }}</h5>
+                {{ item.created_date }}
+                <div><a href="/delete_card/{{ item.id }}" class="btn btn-danger">Удалить</a></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
